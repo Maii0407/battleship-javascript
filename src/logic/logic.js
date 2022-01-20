@@ -13,6 +13,14 @@ const logic = ( function() {
         isHit(pos) {
             return this.hits.push(pos);
         }
+
+        isSunk() {
+            if( JSON.stringify( this.hits ) === JSON.stringify( this.position ) ) { 
+                return true;
+            } else {
+                return false;
+            }
+        }
     };
 
     return {

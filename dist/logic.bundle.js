@@ -16,7 +16,7 @@
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"logic\": () => (/* binding */ logic)\n/* harmony export */ });\n\nconst logic = ( function() {\n    const shipList = [];\n\n    class Ship {\n        constructor( name, length, position ) {\n            this.name = name;\n            this.length = length;\n            this.position = position;\n            this.hits = [];\n        }\n\n        isHit(pos) {\n            return this.hits.push(pos);\n        }\n    };\n\n    return {\n        shipList,\n        Ship,\n    };\n})();\n\n\n\n//# sourceURL=webpack://space-battleship/./src/logic/logic.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"logic\": () => (/* binding */ logic)\n/* harmony export */ });\n\nconst logic = ( function() {\n    const shipList = [];\n\n    class Ship {\n        constructor( name, length, position ) {\n            this.name = name;\n            this.length = length;\n            this.position = position;\n            this.hits = [];\n        }\n\n        isHit(pos) {\n            return this.hits.push(pos);\n        }\n\n        isSunk() {\n            if( JSON.stringify( this.hits ) === JSON.stringify( this.position ) ) { \n                return true;\n            } else {\n                return false;\n            }\n        }\n    };\n\n    return {\n        shipList,\n        Ship,\n    };\n})();\n\n\n\n//# sourceURL=webpack://space-battleship/./src/logic/logic.js?");
 
 /***/ })
 
