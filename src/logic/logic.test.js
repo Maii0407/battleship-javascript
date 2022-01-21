@@ -1,5 +1,6 @@
 import { logic } from "./logic";
 
+//below is tests for ship section of logic.js
 test( 'single isHit function test', () => {
     const testShip = new logic.Ship( 'Cruiser', 3, [0, 1, 2]);
     testShip.isHit(1);
@@ -27,4 +28,17 @@ test( 'true isSunk function test', () => {
     testShip3.isHit(10);
     testShip3.isHit(11);
     expect(testShip3.isSunk()).toBe(true);
+});
+
+//below is test for the gameboard section of the logic.js
+test( 'test recordAttack function 1', () => {
+    const testBoard = new logic.Gameboard();
+    testBoard.recordAttack(48);
+    expect(testBoard.boardArray[48].isAttacked).toBe(true);
+});
+
+test( 'placeShip function test', () => {
+    const testBoard = new logic.Gameboard();
+    const testShip = new logic.Ship( 'Cruiser', 3, [0, 1, 2]);
+    expect(testBoard.boardArray[0, 1, 2].haveShip).toBe(true);
 });
