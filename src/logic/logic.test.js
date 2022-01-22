@@ -31,14 +31,23 @@ test( 'true isSunk function test', () => {
 });
 
 //below is test for the gameboard section of the logic.js
-test( 'test recordAttack function 1', () => {
+test( 'test recordAttack missed function', () => {
     const testBoard = new logic.Gameboard();
     testBoard.recordAttack(48);
-    expect(testBoard.boardArray[48].isAttacked).toBe(true);
+    expect(testBoard.boardArray[48].isAttacked).toBe('missed');
 });
 
 test( 'placeShip function test', () => {
     const testBoard = new logic.Gameboard();
     const testShip = new logic.Ship( 'Cruiser', 3, [0, 1, 2]);
-    expect(testBoard.boardArray[0, 1, 2].haveShip).toBe(true);
+    testBoard.placeShip( testShip.position );
+    expect(testBoard.boardArray[0, 1, 2].haveShip).toBe( true );
+});
+
+test( 'recordAttack shot function test', () => {
+    const testBoard = new logic.Gameboard();
+    const testShip = new logic.Ship( 'Cruiser', 3, [0, 1, 2]);
+    testBoard.placeShip( testShip.position );
+    testBoard.recordAttack(1);
+    expect(testBoard.boardArray[1].isAttacked).toBe( 'shot' );
 });

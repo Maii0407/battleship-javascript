@@ -33,15 +33,27 @@ const logic = ( function() {
 
         generateBoard() {
             for( let i = 0; i < 49; i++) {
-                this.boardArray.push({ haveShip: false, isAttacked: false });
+                this.boardArray.push({ haveShip: false, isAttacked: 'empty' });
             }
         }
 
         recordAttack(boardIndex) {
-            this.boardArray[boardIndex].isAttacked = true;
+            if( this.boardArray[boardIndex].haveShip === false ) {
+                return this.boardArray[boardIndex].isAttacked = 'missed';
+            } else if( this.boardArray[boardIndex].haveShip === true ) {
+                return this.boardArray[boardIndex].isAttacked = 'shot';
+            } else {
+                return;
+            }
         }
 
-        placeShip() {}
+        placeShip(boardIndex) {
+            boardIndex.forEach( object => {
+                return this.boardArray[object].haveShip = true;
+            });
+        }
+
+        checkSunkShips() {}
     };
 
     return {
