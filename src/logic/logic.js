@@ -4,11 +4,17 @@ const logic = ( function() {
 
 //below is class that generates ships and their methods
     class Ship {
-        constructor( name, length, position ) {
+        constructor( name, length ) {
             this.name = name;
             this.length = length;
-            this.position = position;
+            this.position = [];
             this.hits = [];
+        }
+
+        setPosition(positionArray) {
+            positionArray.forEach( object => {
+                this.position.push( object );
+            });
         }
 
         isHit(pos) {
