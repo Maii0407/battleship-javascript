@@ -10,23 +10,23 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/factoryLogic/factoryLogic.js":
+/*!******************************************!*\
+  !*** ./src/factoryLogic/factoryLogic.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"factoryLogic\": () => (/* binding */ factoryLogic)\n/* harmony export */ });\n\nconst factoryLogic = ( function() {\n\n//below is class that generates ships and their methods\n    class Ship {\n        constructor( name, length ) {\n            this.name = name;\n            this.length = length;\n            this.position = [];\n            this.hits = [];\n            this.sunkStatus = false;\n        }\n\n        setPosition(positionArray) {\n            positionArray.forEach( object => {\n                this.position.push( object );\n            });\n        }\n\n        isHit(pos) {\n            return this.hits.push(pos);\n        }\n\n        isSunk() {\n            if( JSON.stringify( this.hits ) === JSON.stringify( this.position ) ) { \n                return this.sunkStatus = true;\n            } else {\n                return;\n            }\n        }\n    };\n\n//below is class that generates the gameboards and their methods\n    class Gameboard {\n        constructor() {\n            this.boardArray = []\n            this.shipList = [];\n            this.generateBoard();\n            this.allShips = 'sunk';\n        }\n\n        generateBoard() {\n            for( let i = 0; i < 49; i++) {\n                this.boardArray.push({ haveShip: false, isAttacked: 'empty' });\n            }\n        }\n\n        recordAttack(boardIndex) {\n            if( this.boardArray[boardIndex].haveShip === false ) {\n                return this.boardArray[boardIndex].isAttacked = 'missed';\n            } else if( this.boardArray[boardIndex].haveShip === true ) {\n                this.boardArray[boardIndex].isAttacked = 'shot';\n            } else {\n                return;\n            }\n        }\n\n        placeShip(boardIndex) {\n            boardIndex.forEach( object => {\n                return this.boardArray[object].haveShip = true;\n            });\n        }\n\n        checkSunkShips() {\n            for ( let obj of this.shipList) {\n                obj.isSunk();\n\n                if( obj.sunkStatus === false ) {\n                    this.allShips = 'not sunk';\n                }\n            };\n            return this.allShips;\n        }\n            //thinking of using forEach and every array methods to check status of\n            //all ships inside ship array\n    };\n\n    return {\n        Ship,\n        Gameboard,\n    };\n})();\n\n\n\n//# sourceURL=webpack://space-battleship/./src/factoryLogic/factoryLogic.js?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _logic_logic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./logic/logic */ \"./src/logic/logic.js\");\n\n\nconst testBoard = new _logic_logic__WEBPACK_IMPORTED_MODULE_0__.logic.Gameboard();\n\nconsole.log(testBoard);\n\n//# sourceURL=webpack://space-battleship/./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/logic/logic.js":
-/*!****************************!*\
-  !*** ./src/logic/logic.js ***!
-  \****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"logic\": () => (/* binding */ logic)\n/* harmony export */ });\n\nconst logic = ( function() {\n\n//below is class that generates ships and their methods\n    class Ship {\n        constructor( name, length ) {\n            this.name = name;\n            this.length = length;\n            this.position = [];\n            this.hits = [];\n            this.sunkStatus = false;\n        }\n\n        setPosition(positionArray) {\n            positionArray.forEach( object => {\n                this.position.push( object );\n            });\n        }\n\n        isHit(pos) {\n            return this.hits.push(pos);\n        }\n\n        isSunk() {\n            if( JSON.stringify( this.hits ) === JSON.stringify( this.position ) ) { \n                return this.sunkStatus = true;\n            } else {\n                return;\n            }\n        }\n    };\n\n//below is class that generates the gameboards and their methods\n    class Gameboard {\n        constructor() {\n            this.boardArray = []\n            this.shipList = [];\n            this.generateBoard();\n            this.allShips = 'sunk';\n        }\n\n        generateBoard() {\n            for( let i = 0; i < 49; i++) {\n                this.boardArray.push({ haveShip: false, isAttacked: 'empty' });\n            }\n        }\n\n        recordAttack(boardIndex) {\n            if( this.boardArray[boardIndex].haveShip === false ) {\n                return this.boardArray[boardIndex].isAttacked = 'missed';\n            } else if( this.boardArray[boardIndex].haveShip === true ) {\n                return this.boardArray[boardIndex].isAttacked = 'shot';\n            } else {\n                return;\n            }\n        }\n\n        placeShip(boardIndex) {\n            boardIndex.forEach( object => {\n                return this.boardArray[object].haveShip = true;\n            });\n        }\n\n        checkSunkShips() {\n            for ( let obj of this.shipList) {\n                obj.isSunk();\n\n                if( obj.sunkStatus === false ) {\n                    this.allShips = 'not sunk';\n                }\n            };\n            return this.allShips;\n        }\n            //thinking of using forEach and every array methods to check status of\n            //all ships inside ship array\n    };\n\n    return {\n        Ship,\n        Gameboard,\n    };\n})();\n\n\n\n//# sourceURL=webpack://space-battleship/./src/logic/logic.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _factoryLogic_factoryLogic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./factoryLogic/factoryLogic */ \"./src/factoryLogic/factoryLogic.js\");\n\n\nconst testBoard = new _factoryLogic_factoryLogic__WEBPACK_IMPORTED_MODULE_0__.factoryLogic.Gameboard();\n\nconsole.log(testBoard);\n\n//# sourceURL=webpack://space-battleship/./src/index.js?");
 
 /***/ })
 
