@@ -36,6 +36,7 @@ const logic = ( function() {
             this.boardArray = []
             this.shipList = [];
             this.generateBoard();
+            this.allShips = 'sunk';
         }
 
         generateBoard() {
@@ -60,13 +61,21 @@ const logic = ( function() {
             });
         }
 
-        checkSunkShips() {}
+        checkSunkShips() {
+            for ( let obj of this.shipList) {
+                obj.isSunk();
+
+                if( obj.sunkStatus === false ) {
+                    this.allShips = 'not sunk';
+                }
+            };
+            return this.allShips;
+        }
             //thinking of using forEach and every array methods to check status of
             //all ships inside ship array
     };
 
     return {
-        shipList,
         Ship,
         Gameboard,
     };

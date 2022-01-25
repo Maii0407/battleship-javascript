@@ -66,5 +66,53 @@ test( 'function check all ships sunk TEST', () => {
     testShip.setPosition( [3, 4] );
     testBoard.placeShip( testShip.position );
     testBoard.shipList.push( testShip );
+    testBoard.recordAttack(3);
+    testBoard.recordAttack(4);
+    testShip.isHit(3);
+    testShip.isHit(4);
+    testBoard.checkSunkShips();
 
+    expect( testBoard.allShips ).toBe( 'sunk' );
 });
+
+test( 'function check multiple ships sunk false TEST', () => {
+    const testBoard = new logic.Gameboard();
+    const testShip = new logic.Ship( 'Destroyer', 2 );
+    const testShip1 = new logic.Ship( 'Destroyer1', 2)
+    testShip.setPosition( [3, 4] );
+    testShip1.setPosition( [7, 8]);
+    testBoard.placeShip( testShip.position );
+    testBoard.placeShip( testShip1.position);
+    testBoard.shipList.push( testShip, testShip1 );
+    testBoard.recordAttack(3);
+    testBoard.recordAttack(4);
+    testShip.isHit(3);
+    testShip.isHit(4);
+    testBoard.checkSunkShips();
+
+    expect( testBoard.allShips ).toBe( 'not sunk' );
+});
+
+test( 'function check multiple ships sunk false TEST', () => {
+    const testBoard = new logic.Gameboard();
+    const testShip = new logic.Ship( 'Destroyer', 2 );
+    const testShip1 = new logic.Ship( 'Destroyer1', 2)
+    testShip.setPosition( [3, 4] );
+    testShip1.setPosition( [7, 8]);
+    testBoard.placeShip( testShip.position );
+    testBoard.placeShip( testShip1.position);
+    testBoard.shipList.push( testShip, testShip1 );
+    testBoard.recordAttack(3);
+    testBoard.recordAttack(4);
+    testBoard.recordAttack(7);
+    testBoard.recordAttack(8);
+    testShip.isHit(3);
+    testShip.isHit(4);
+    testShip1.isHit(7);
+    testShip1.isHit(8);
+    testBoard.checkSunkShips();
+
+    expect( testBoard.allShips ).toBe( 'sunk' );
+});
+
+//below is test for player section of logic.js lol
