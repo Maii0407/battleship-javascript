@@ -6,7 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
    entry: {
      index: './src/index.js',
      style: './src/style.css',
-     logic: './src/logic/logic.js',
+     factoryLogic: './src/factoryLogic/factoryLogic.js',
+     playerLogic: './src/playerLogic/playerLogic.js',
    },
   plugins: [
     new HtmlWebpackPlugin({

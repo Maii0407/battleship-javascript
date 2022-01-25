@@ -1,15 +1,16 @@
-import { logic } from "./logic";
 
-//below is tests for ship section of logic.js
+import { factoryLogic } from "./factoryLogic";
+
+//below is tests for ship section of factoryLogic.js
 test( 'single isHit function test', () => {
-    const testShip = new logic.Ship( 'Cruiser', 3 );
+    const testShip = new factoryLogic.Ship( 'Cruiser', 3 );
     testShip.setPosition([0, 1, 2]);
     testShip.isHit(1);
     expect( testShip.hits ).toEqual([1]);
 });
 
 test( 'multiple isHit function test', () => {
-    const testShip1 = new logic.Ship( 'Battleship', 4);
+    const testShip1 = new factoryLogic.Ship( 'Battleship', 4);
     testShip1.setPosition([3, 4, 5, 6])
     testShip1.isHit(3);
     testShip1.isHit(4);
@@ -18,7 +19,7 @@ test( 'multiple isHit function test', () => {
 });
 
 test( 'false isSunk function test', () => {
-    const testShip2 = new logic.Ship( 'Carrier', 6);
+    const testShip2 = new factoryLogic.Ship( 'Carrier', 6);
     testShip2.setPosition([0, 1, 2, 3, 4, 5, 6])
     testShip2.isHit(0);
     testShip2.isHit(1);
@@ -28,7 +29,7 @@ test( 'false isSunk function test', () => {
 });
 
 test( 'true isSunk function test', () => {
-    const testShip3 = new logic.Ship( 'Destroyer', 2);
+    const testShip3 = new factoryLogic.Ship( 'Destroyer', 2);
     testShip3.setPosition([10, 11])
     testShip3.isHit(10);
     testShip3.isHit(11);
@@ -36,24 +37,24 @@ test( 'true isSunk function test', () => {
     expect(testShip3.sunkStatus).toBe(true);
 });
 
-//below is test for the gameboard section of the logic.js
+//below is test for the gameboard section of the factoryLogic.js
 test( 'test recordAttack missed function', () => {
-    const testBoard = new logic.Gameboard();
+    const testBoard = new factoryLogic.Gameboard();
     testBoard.recordAttack(48);
     expect(testBoard.boardArray[48].isAttacked).toBe('missed');
 });
 
 test( 'placeShip function test', () => {
-    const testBoard = new logic.Gameboard();
-    const testShip = new logic.Ship( 'Cruiser', 3);
+    const testBoard = new factoryLogic.Gameboard();
+    const testShip = new factoryLogic.Ship( 'Cruiser', 3);
     testShip.setPosition([0, 1, 2])
     testBoard.placeShip( testShip.position );
     expect(testBoard.boardArray[0, 1, 2].haveShip).toBe( true );
 });
 
 test( 'recordAttack shot function test', () => {
-    const testBoard = new logic.Gameboard();
-    const testShip = new logic.Ship( 'Cruiser', 3);
+    const testBoard = new factoryLogic.Gameboard();
+    const testShip = new factoryLogic.Ship( 'Cruiser', 3);
     testShip.setPosition([0, 1, 2])
     testBoard.placeShip( testShip.position );
     testBoard.recordAttack(1);
@@ -61,8 +62,8 @@ test( 'recordAttack shot function test', () => {
 });
 
 test( 'function check all ships sunk TEST', () => {
-    const testBoard = new logic.Gameboard();
-    const testShip = new logic.Ship( 'Destroyer', 2 );
+    const testBoard = new factoryLogic.Gameboard();
+    const testShip = new factoryLogic.Ship( 'Destroyer', 2 );
     testShip.setPosition( [3, 4] );
     testBoard.placeShip( testShip.position );
     testBoard.shipList.push( testShip );
@@ -76,9 +77,9 @@ test( 'function check all ships sunk TEST', () => {
 });
 
 test( 'function check multiple ships sunk false TEST', () => {
-    const testBoard = new logic.Gameboard();
-    const testShip = new logic.Ship( 'Destroyer', 2 );
-    const testShip1 = new logic.Ship( 'Destroyer1', 2)
+    const testBoard = new factoryLogic.Gameboard();
+    const testShip = new factoryLogic.Ship( 'Destroyer', 2 );
+    const testShip1 = new factoryLogic.Ship( 'Destroyer1', 2)
     testShip.setPosition( [3, 4] );
     testShip1.setPosition( [7, 8]);
     testBoard.placeShip( testShip.position );
@@ -94,9 +95,9 @@ test( 'function check multiple ships sunk false TEST', () => {
 });
 
 test( 'function check multiple ships sunk false TEST', () => {
-    const testBoard = new logic.Gameboard();
-    const testShip = new logic.Ship( 'Destroyer', 2 );
-    const testShip1 = new logic.Ship( 'Destroyer1', 2)
+    const testBoard = new factoryLogic.Gameboard();
+    const testShip = new factoryLogic.Ship( 'Destroyer', 2 );
+    const testShip1 = new factoryLogic.Ship( 'Destroyer1', 2)
     testShip.setPosition( [3, 4] );
     testShip1.setPosition( [7, 8]);
     testBoard.placeShip( testShip.position );
@@ -114,5 +115,3 @@ test( 'function check multiple ships sunk false TEST', () => {
 
     expect( testBoard.allShips ).toBe( 'sunk' );
 });
-
-//below is test for player section of logic.js lol

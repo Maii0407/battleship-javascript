@@ -1,5 +1,5 @@
-import { logic } from "./logic/logic";
+import { factoryLogic } from "./factoryLogic/factoryLogic";
 
-const testBoard = new logic.Gameboard();
+const testBoard = new factoryLogic.Gameboard();
 
 console.log(testBoard);

@@ -1,5 +1,5 @@
 
-const logic = ( function() {
+const factoryLogic = ( function() {
 
 //below is class that generates ships and their methods
     class Ship {
@@ -49,7 +49,7 @@ const logic = ( function() {
             if( this.boardArray[boardIndex].haveShip === false ) {
                 return this.boardArray[boardIndex].isAttacked = 'missed';
             } else if( this.boardArray[boardIndex].haveShip === true ) {
-                return this.boardArray[boardIndex].isAttacked = 'shot';
+                this.boardArray[boardIndex].isAttacked = 'shot';
             } else {
                 return;
             }
@@ -81,4 +81,4 @@ const logic = ( function() {
     };
 })();
 
-export { logic };
+export { factoryLogic };
