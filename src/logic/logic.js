@@ -1,6 +1,5 @@
 
 const logic = ( function() {
-    const shipList = [];
 
 //below is class that generates ships and their methods
     class Ship {
@@ -9,6 +8,7 @@ const logic = ( function() {
             this.length = length;
             this.position = [];
             this.hits = [];
+            this.sunkStatus = false;
         }
 
         setPosition(positionArray) {
@@ -23,9 +23,9 @@ const logic = ( function() {
 
         isSunk() {
             if( JSON.stringify( this.hits ) === JSON.stringify( this.position ) ) { 
-                return true;
+                return this.sunkStatus = true;
             } else {
-                return false;
+                return;
             }
         }
     };
@@ -34,6 +34,7 @@ const logic = ( function() {
     class Gameboard {
         constructor() {
             this.boardArray = []
+            this.shipList = [];
             this.generateBoard();
         }
 
@@ -60,6 +61,8 @@ const logic = ( function() {
         }
 
         checkSunkShips() {}
+            //thinking of using forEach and every array methods to check status of
+            //all ships inside ship array
     };
 
     return {

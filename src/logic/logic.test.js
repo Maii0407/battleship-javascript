@@ -23,7 +23,8 @@ test( 'false isSunk function test', () => {
     testShip2.isHit(0);
     testShip2.isHit(1);
     testShip2.isHit(2);
-    expect(testShip2.isSunk()).toBe(false);
+    testShip2.isSunk();
+    expect(testShip2.sunkStatus).toBe(false);
 });
 
 test( 'true isSunk function test', () => {
@@ -31,7 +32,8 @@ test( 'true isSunk function test', () => {
     testShip3.setPosition([10, 11])
     testShip3.isHit(10);
     testShip3.isHit(11);
-    expect(testShip3.isSunk()).toBe(true);
+    testShip3.isSunk();
+    expect(testShip3.sunkStatus).toBe(true);
 });
 
 //below is test for the gameboard section of the logic.js
@@ -56,4 +58,13 @@ test( 'recordAttack shot function test', () => {
     testBoard.placeShip( testShip.position );
     testBoard.recordAttack(1);
     expect(testBoard.boardArray[1].isAttacked).toBe( 'shot' );
+});
+
+test( 'function check all ships sunk TEST', () => {
+    const testBoard = new logic.Gameboard();
+    const testShip = new logic.Ship( 'Destroyer', 2 );
+    testShip.setPosition( [3, 4] );
+    testBoard.placeShip( testShip.position );
+    testBoard.shipList.push( testShip );
+
 });
