@@ -1,21 +1,30 @@
 import { factoryLogic } from "../factoryLogic/factoryLogic";
 import { playerLogic } from "./playerLogic";
 
-test( 'playGame function test', () => {
-    const myTestBoard = new factoryLogic.Gameboard();
-    const myTestShip = new factoryLogic.Ship( 'myCarrier', 5 );
-    myTestShip.setPosition([0, 1, 2, 3, 4, 5]);
-    myTestBoard.placeShip( myTestShip.position );
-    myTestBoard.shipList.push( myTestShip );
+describe( 'playerLogic module TEST', () => {
+    let playerBoard;
+    let playerShip;
+    let comBoard;
+    let comShip;
+    beforeEach( () => {
+        playerBoard = new factoryLogic.Gameboard();
+        playerShip = new factoryLogic.Ship( 'playerShip', 3, 0 );
+        playerShip.setPosition( [0, 1, 2] );
+        playerBoard.placeShip( playerShip );
+        playerBoard.shipList.push( playerShip );
 
-    const enemyTestBoard = new factoryLogic.Gameboard();
-    const enemyTestShip = new factoryLogic.Ship( 'enemyCarrier', 5);
-    enemyTestShip.setPosition([6, 7, 8, 9, 10]);
-    enemyTestBoard.placeShip( enemyTestShip.position );
-    enemyTestBoard.shipList.push( enemyTestShip );
+        comBoard = new factoryLogic.Gameboard();
+        comShip = new factoryLogic.Ship(  'comShip', 3, 0);
+        comShip.setPosition( [3, 4, 5] );
+        comBoard.placeShip( comShip );
+        comBoard.shipList.push( comShip );
+    });
 
-    playerLogic.playGame( enemyTestBoard, myTestBoard, 6 );
+    test( 'playGame function TEST', () => {
+        playerLogic.playGame( comBoard, playerBoard, 3);
 
-    expect( enemyTestBoard.boardArray[6].isAttacked ).toBe( 'shot' );
-    expect( playerLogic.playGame( enemyTestBoard, myTestBoard, 6) ).toBe( 'player' );
+        expect( comBoard.boardArray[3].isAttacked ).toBe( 'shot' );
+        expect( comBoard.shipList[0].hits ).toEqual( [3] );
+        //expect( playerLogic.playGame( comBoard, playerBoard, 3 )).toBe( 'player' );
+    });
 });

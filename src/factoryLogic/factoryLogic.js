@@ -3,9 +3,10 @@ const factoryLogic = ( function() {
 
 //below is class that generates ships and their methods
     class Ship {
-        constructor( name, length ) {
+        constructor( name, length, shipIndex ) {
             this.name = name;
             this.length = length;
+            this.shipIndex = shipIndex;
             this.position = [];
             this.hits = [];
             this.sunkStatus = false;
@@ -22,10 +23,10 @@ const factoryLogic = ( function() {
         }
 
         isSunk() {
-            if( JSON.stringify( this.hits ) === JSON.stringify( this.position ) ) { 
+            if( this.hits.length === this.length ) { 
                 return this.sunkStatus = true;
             } else {
-                return;
+                return this.sunkStatus;
             }
         }
     };
@@ -41,23 +42,27 @@ const factoryLogic = ( function() {
 
         generateBoard() {
             for( let i = 0; i < 49; i++) {
-                this.boardArray.push({ haveShip: false, isAttacked: 'empty' });
+                this.boardArray.push({ haveShip: 'empty', isAttacked: 'empty' });
             }
+        }
+
+        getHaveShip(boardIndex) {
+            return this.boardArray[boardIndex].haveShip;
         }
 
         recordAttack(boardIndex) {
-            if( this.boardArray[boardIndex].haveShip === false ) {
-                return this.boardArray[boardIndex].isAttacked = 'missed';
-            } else if( this.boardArray[boardIndex].haveShip === true ) {
-                this.boardArray[boardIndex].isAttacked = 'shot';
+            if( this.boardArray[boardIndex].haveShip === 'empty' ) {
+                this.boardArray[boardIndex].isAttacked = 'missed';
             } else {
-                return;
-            }
+                const shipIndex = this.getHaveShip(boardIndex);
+                this.boardArray[boardIndex].isAttacked = 'shot';
+                this.shipList[shipIndex].isHit( boardIndex );
+            } 
         }
 
-        placeShip(boardIndex) {
-            boardIndex.forEach( object => {
-                return this.boardArray[object].haveShip = true;
+        placeShip(board) {
+            board.position.forEach( object => {
+                return this.boardArray[object].haveShip = board.shipIndex;
             });
         }
 
@@ -66,13 +71,11 @@ const factoryLogic = ( function() {
                 obj.isSunk();
 
                 if( obj.sunkStatus === false ) {
-                    this.allShips = 'not sunk';
+                    return this.allShips = 'not sunk';
                 }
             };
             return this.allShips;
         }
-            //thinking of using forEach and every array methods to check status of
-            //all ships inside ship array
     };
 
     return {

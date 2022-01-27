@@ -19,8 +19,6 @@ const playerLogic = (function() {
         } else if( turn === 'computer' ) {
             computerPlay( myBoard );
             return turn = 'player';
-        } else {
-            return;
         }
     }
 
