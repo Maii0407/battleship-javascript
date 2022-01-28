@@ -20,11 +20,25 @@ describe( 'playerLogic module TEST', () => {
         comBoard.shipList.push( comShip );
     });
 
-    test( 'playGame function TEST', () => {
-        playerLogic.playGame( comBoard, playerBoard, 3);
+    test( 'playerTurn function TEST', () => {
+        playerLogic.playerTurn( comBoard, 3 );
 
         expect( comBoard.boardArray[3].isAttacked ).toBe( 'shot' );
         expect( comBoard.shipList[0].hits ).toEqual( [3] );
-        //expect( playerLogic.playGame( comBoard, playerBoard, 3 )).toBe( 'player' );
     });
+
+//below test works but if ur lucky it wont work because the computer shot the test ships LOL
+    test( 'computerTurn function TEST', () => {
+        playerLogic.computerTurn( playerBoard );
+
+        expect( playerBoard.boardArray ).toEqual(
+            expect.arrayContaining([
+                expect.objectContaining({
+                    isAttacked: 'missed'
+                })
+            ])
+        )
+    });
+
+    test( 'playing a round TEST', () => {});
 });

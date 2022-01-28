@@ -40,7 +40,7 @@ const factoryLogic = ( function() {
             this.allShips = 'sunk';
         }
 
-        generateBoard() {
+        generateBoard( gridSize ) {
             for( let i = 0; i < 49; i++) {
                 this.boardArray.push({ haveShip: 'empty', isAttacked: 'empty' });
             }
