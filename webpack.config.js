@@ -8,6 +8,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
      style: './src/style.css',
      factoryLogic: './src/factoryLogic/factoryLogic.js',
      playerLogic: './src/playerLogic/playerLogic.js',
+     appUI: './src/appUI.js',
+     appComponents: './src/appComponents.js',
    },
   plugins: [
     new HtmlWebpackPlugin({

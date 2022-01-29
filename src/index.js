@@ -1,5 +1,8 @@
 import { factoryLogic } from "./factoryLogic/factoryLogic";
+import { appUI } from "./appUI";
 
-const testBoard = new factoryLogic.Gameboard();
+const spaceBattleShip = (function() {
+    appUI.makeContainer();
 
-console.log(testBoard);
+    return {};
+})();

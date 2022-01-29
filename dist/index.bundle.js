@@ -10,6 +10,16 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/appUI.js":
+/*!**********************!*\
+  !*** ./src/appUI.js ***!
+  \**********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"appUI\": () => (/* binding */ appUI)\n/* harmony export */ });\n\nconst appUI = (function() {\n    function makeContainer() {\n        const mainContainer = document.createElement( 'div' );\n        mainContainer.classList.add( 'main-container' );\n        document.body.appendChild( mainContainer );\n    };\n\n    return {\n        makeContainer,\n    };\n})();\n\n\n\n//# sourceURL=webpack://space-battleship/./src/appUI.js?");
+
+/***/ }),
+
 /***/ "./src/factoryLogic/factoryLogic.js":
 /*!******************************************!*\
   !*** ./src/factoryLogic/factoryLogic.js ***!
@@ -26,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _factoryLogic_factoryLogic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./factoryLogic/factoryLogic */ \"./src/factoryLogic/factoryLogic.js\");\n\n\nconst testBoard = new _factoryLogic_factoryLogic__WEBPACK_IMPORTED_MODULE_0__.factoryLogic.Gameboard();\n\nconsole.log(testBoard);\n\n//# sourceURL=webpack://space-battleship/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _factoryLogic_factoryLogic__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./factoryLogic/factoryLogic */ \"./src/factoryLogic/factoryLogic.js\");\n/* harmony import */ var _appUI__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./appUI */ \"./src/appUI.js\");\n\n\n\nconst spaceBattleShip = (function() {\n    _appUI__WEBPACK_IMPORTED_MODULE_1__.appUI.makeContainer();\n\n    return {};\n})();\n\n//# sourceURL=webpack://space-battleship/./src/index.js?");
 
 /***/ })
 
