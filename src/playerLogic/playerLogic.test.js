@@ -40,5 +40,18 @@ describe( 'playerLogic module TEST', () => {
         )
     });
 
-    test( 'playing a round TEST', () => {});
+    test( 'playing a round TEST', () => {
+        playerLogic.playRound( comBoard, 3, playerBoard );
+
+        expect( comBoard.boardArray[3].isAttacked ).toBe( 'shot' );
+        expect( comBoard.shipList[0].hits ).toEqual( [3] );
+        //if ur lucky the test will fail
+        expect( playerBoard.boardArray ).toEqual(
+            expect.arrayContaining([
+                expect.objectContaining({
+                    isAttacked: 'missed'
+                })
+            ])
+        );
+    });
 });

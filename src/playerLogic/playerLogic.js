@@ -17,9 +17,15 @@ const playerLogic = (function() {
         }
     };
 
+    function playRound( enemyBoard, location, myBoard ) {
+        playerTurn( enemyBoard, location );
+        computerTurn( myBoard );
+    };
+
     return {
         computerTurn,
         playerTurn,
+        playRound,
     };
 })();
 
