@@ -33,7 +33,8 @@ const factoryLogic = ( function() {
 
 //below is class that generates the gameboards and their methods
     class Gameboard {
-        constructor() {
+        constructor( name ) {
+            this.name = name;
             this.boardArray = []
             this.shipList = [];
             this.generateBoard();
