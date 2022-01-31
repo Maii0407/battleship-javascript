@@ -15,10 +15,13 @@ const appUI = (function() {
 
     function generatePlayerBoard() {
         const board = document.createElement( 'div' );
-        board.classList.add( 'board' );
+        board.classList.add( 'board', 'player-board' );
         board.id = appComponents.playerBoard.name;
         document.querySelector( '.board-container' ).appendChild( board );
+    };
 
+    function generatePlayerCell() {
+        document.querySelector( '.player-board' ).innerHTML = '';
         for( let obj of appComponents.playerBoard.boardArray ) {
             let cell = document.createElement( 'div' );
             cell.classList.add( 'cell' );
@@ -36,13 +39,15 @@ const appUI = (function() {
 
     function generateComBoard() {
         const board = document.createElement( 'div' );
-        board.classList.add( 'board' );
+        board.classList.add( 'board', 'com-board' );
         board.id = appComponents.comBoard.name;
         document.querySelector( '.board-container' ).appendChild( board );
+    };
 
+    function generateComCell() {
         for( let obj of appComponents.comBoard.boardArray ) {
             let cell = document.createElement( 'div' );
-            cell.classList.add( 'cell' );
+            cell.classList.add( 'cell', 'com-cell' );
             cell.id = appComponents.comBoard.boardArray.indexOf( obj );
             document.getElementById( `${appComponents.comBoard.name}` ).appendChild( cell );
         };
@@ -52,7 +57,9 @@ const appUI = (function() {
         makeContainer,
         makeBoardContainer,
         generatePlayerBoard,
+        generatePlayerCell,
         generateComBoard,
+        generateComCell,
     };
 })();
 

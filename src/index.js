@@ -1,12 +1,20 @@
-import { factoryLogic } from "./factoryLogic/factoryLogic";
 import { appUI } from "./appUI";
-import { appComponents } from "./appComponents";
+import { appEvents } from "./appEvents";
 
 const spaceBattleShip = (function() {
     appUI.makeContainer();
     appUI.makeBoardContainer();
+
+    //player board
     appUI.generatePlayerBoard();
+    appUI.generatePlayerCell();
+    
+    //computer board
     appUI.generateComBoard();
+    appUI.generateComCell();
+
+    //eventlisteners
+    appEvents.comCellEvents();
 
     return {};
 })();

@@ -1,4 +1,3 @@
-
 const playerLogic = (function() {
 
     function computerTurn( boardName ) {

@@ -1,4 +1,3 @@
-
 const factoryLogic = ( function() {
 
 //below is class that generates ships and their methods

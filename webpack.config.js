@@ -10,6 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
      playerLogic: './src/playerLogic/playerLogic.js',
      appUI: './src/appUI.js',
      appComponents: './src/appComponents.js',
+     appEvents: './src/appEvents.js',
    },
   plugins: [
     new HtmlWebpackPlugin({

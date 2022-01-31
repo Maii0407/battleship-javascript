@@ -22,6 +22,17 @@ comBoard.shipList.push( comShip0, comShip1, comShip2, comShip3, comShip4 );
 playerShip0.setPosition( [0, 1, 2, 3, 4] );
 playerBoard.placeShip( playerShip0 );
 
+comShip0.setPosition( [0, 1, 2, 3, 4] );
+comBoard.placeShip( comShip0 );
+comShip1.setPosition( [8, 9, 10, 11] );
+comBoard.placeShip( comShip1 );
+comShip2.setPosition( [15, 16, 17] );
+comBoard.placeShip( comShip2 );
+comShip3.setPosition( [47, 48] );
+comBoard.placeShip( comShip3 );
+comShip4.setPosition( [44, 45] );
+comBoard.placeShip( comShip4 );
+
 return {
     playerBoard,
     comBoard,
