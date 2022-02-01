@@ -60,7 +60,8 @@ const appUI = (function() {
     function generateForms() {
         const comBoard = document.querySelector( '.com-board' );
         comBoard.innerHTML = '';
-        comBoard.innerHTML = ``
+        comBoard.innerHTML = ``;
+        //forms use datalist
     };
 
     return {
