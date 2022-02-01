@@ -1,18 +1,21 @@
 import { appComponents } from "./appComponents";
 
 const appUI = (function() {
+//generate a main container div
     function makeContainer() {
         const mainContainer = document.createElement( 'div' );
         mainContainer.classList.add( 'main-container' );
         document.body.appendChild( mainContainer );
     };
 
+//generate a board container for the boards
     function makeBoardContainer() {
         const boardContainer = document.createElement( 'div' );
         boardContainer.classList.add( 'board-container' );
         document.querySelector( '.main-container' ).appendChild( boardContainer );
     };
 
+//append a board inside the board container then generates the cells for the grid
     function generatePlayerBoard() {
         const board = document.createElement( 'div' );
         board.classList.add( 'board', 'player-board' );
@@ -37,6 +40,7 @@ const appUI = (function() {
         };
     };
 
+//append a board inside the board container then generates the cells for the grid
     function generateComBoard() {
         const board = document.createElement( 'div' );
         board.classList.add( 'board', 'com-board' );
@@ -51,6 +55,12 @@ const appUI = (function() {
             cell.id = appComponents.comBoard.boardArray.indexOf( obj );
             document.getElementById( `${appComponents.comBoard.name}` ).appendChild( cell );
         };
+    };
+
+    function generateForms() {
+        const comBoard = document.querySelector( '.com-board' );
+        comBoard.innerHTML = '';
+        comBoard.innerHTML = ``
     };
 
     return {

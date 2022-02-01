@@ -11,10 +11,10 @@ const spaceBattleShip = (function() {
     
     //computer board
     appUI.generateComBoard();
-    appUI.generateComCell();
+    //appUI.generateComCell();
 
     //eventlisteners
-    appEvents.comCellEvents();
+    appEvents.boardEvents();
 
     return {};
 })();
