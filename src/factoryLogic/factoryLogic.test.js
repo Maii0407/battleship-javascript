@@ -72,6 +72,7 @@ describe( 'Gameboard class TEST', () => {
         testBoard.recordAttack( 7 );
         testBoard.recordAttack( 8 );
         testBoard.recordAttack( 9 );
-        expect( testBoard.checkSunkShips()).toBe( 'sunk' );
+        testBoard.checkSunkShips()
+        expect( testBoard.allShips ).toBe( 'sunk' );
     });
 });

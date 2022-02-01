@@ -14,7 +14,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
    },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Space BATTLESHIP',
+      title: 'BATTLESHIP',
     }),
   ],
    output: {
