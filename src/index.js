@@ -12,6 +12,7 @@ const spaceBattleShip = (function() {
     //computer board
     appUI.generateComBoard();
     //appUI.generateComCell();
+    appUI.generateForm();
 
     //eventlisteners
     appEvents.boardEvents();
