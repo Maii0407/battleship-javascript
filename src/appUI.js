@@ -61,59 +61,23 @@ const appUI = (function() {
         const comBoard = document.querySelector( '.com-board' );
         comBoard.innerHTML = '';
         const formContainer = document.createElement( 'div' );
-        formContainer.innerHTML = `
-         <form>   
-           <h1>Ship 1</h1>
-           <label for="ship1-direction">Choose ship direction:</label>
-           <select id="ship1-direction" name="ship1-direction">
-             <option value="horizontal">Horizontal</option>
-             <option value="vertical">Vertical</option>
-           </select>
-           <div class="shipCoor-container">
-             <input type="number" id="ship1-position" placeholder="Enter Ship 1 Coordinate" min="0" max="48">
-             <button class="submit-btn" id="ship1-btn">Place Ship</button>
-           </div>
-         </form>
-         <form>   
-           <h1>Ship 1</h1>
-           <label for="ship1-direction">Choose ship direction:</label>
-           <select id="ship1-direction" name="ship1-direction">
-             <option value="horizontal">Horizontal</option>
-             <option value="vertical">Vertical</option>
-           </select>
-           <div class="shipCoor-container">
-             <input type="number" id="ship1-position" placeholder="Enter Ship 1 Coordinate" min="0" max="48">
-             <button class="submit-btn" id="ship1-btn">Place Ship</button>
-           </div>
-         </form>
-         <form>   
-           <h1>Ship 1</h1>
-           <label for="ship1-direction">Choose ship direction:</label>
-           <select id="ship1-direction" name="ship1-direction">
-             <option value="horizontal">Horizontal</option>
-             <option value="vertical">Vertical</option>
-           </select>
-           <div class="shipCoor-container">
-             <input type="number" id="ship1-position" placeholder="Enter Ship 1 Coordinate" min="0" max="48">
-             <button class="submit-btn" id="ship1-btn">Place Ship</button>
-           </div>
-         </form>
-         <form>   
-           <h1>Ship 1</h1>
-           <label for="ship1-direction">Choose ship direction:</label>
-           <select id="ship1-direction" name="ship1-direction">
-             <option value="horizontal">Horizontal</option>
-             <option value="vertical">Vertical</option>
-           </select>
-           <div class="shipCoor-container">
-             <input type="number" id="ship1-position" placeholder="Enter Ship 1 Coordinate" min="0" max="48">
-             <button class="submit-btn" id="ship1-btn">Place Ship</button>
-           </div>
-         </form>`;
-        
+        formContainer.classList.add( 'form-container' );
         document.querySelector( '.com-board' ).appendChild( formContainer );
-        
-        //forms use datalist
+        for( let obj of appComponents.playerBoard.shipList ) {
+          const form = document.createElement( 'form' );
+          form.innerHTML = `   
+            <h1>${obj.name}</h1>
+            <label for="${obj.name}-direction">Choose ship direction:</label>
+            <select id="${obj.name}-direction" name="${obj.name}-direction">
+              <option value="horizontal">Horizontal</option>
+              <option value="vertical">Vertical</option>
+            </select>
+            <div class="shipCoor-container">
+              <input type="number" id="${obj.name}-position" placeholder="Enter Ship 1 Coordinate" min="0" max="48">
+              <button type="button" class="submit-btn" id="${obj.name}-btn">PLACE SHIP</button>
+            </div>`;
+          document.querySelector( '.form-container' ).appendChild( form ); 
+        };
     };
 
     return {

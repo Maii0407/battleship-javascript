@@ -4,16 +4,41 @@ body {
     justify-content: center;
 }
 
+h1 {
+    font-size: 25px;
+}
+
 form {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-h1 {
-    width: 100px;
-    border: 1px solid red;
-    font-size: 25px;
+input {
+    text-indent: 10px;
+}
+
+select {
+    text-indent: 5px;
+}
+
+button {
+    background-color: green;
+    opacity: 0.7;
+}
+
+button:hover {
+    opacity: 1;
+}
+
+input, select, button {
+    margin-top: 10px;
+    border: none;
+    margin-left: 5px;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
 }
 
 .main-container {
@@ -44,12 +69,22 @@ h1 {
     margin-left: 5%;
 }
 
+.player-board {
+    margin-top: 10%;
+}
+
 .cell {
     background-color: black;
     outline: 1px solid white;
     text-align: center;
     padding-top: 10px;
     cursor: pointer;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    color: gainsboro;
 }
 
 .shipCoor-container {

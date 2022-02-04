@@ -36,6 +36,7 @@ comBoard.placeShip( comShip4 ); */
 return {
     playerBoard,
     comBoard,
+    playerShip0,
 };
 })();
 

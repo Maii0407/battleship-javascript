@@ -11,6 +11,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
      appUI: './src/appUI.js',
      appComponents: './src/appComponents.js',
      appEvents: './src/appEvents.js',
+     appFormFunc: './src/appFormFunc.js',
    },
   plugins: [
     new HtmlWebpackPlugin({

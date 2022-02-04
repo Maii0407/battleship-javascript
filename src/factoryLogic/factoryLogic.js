@@ -40,7 +40,7 @@ const factoryLogic = ( function() {
             this.allShips = 'sunk';
         }
 
-        generateBoard( gridSize ) {
+        generateBoard() {
             for( let i = 0; i < 49; i++) {
                 this.boardArray.push({ haveShip: 'empty', isAttacked: 'empty' });
             }
@@ -60,9 +60,9 @@ const factoryLogic = ( function() {
             } 
         }
 
-        placeShip(board) {
-            board.position.forEach( object => {
-                return this.boardArray[object].haveShip = board.shipIndex;
+        placeShip(ship) {
+            ship.position.forEach( object => {
+                return this.boardArray[object].haveShip = ship.shipIndex;
             });
         }
 

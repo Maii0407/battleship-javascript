@@ -1,5 +1,7 @@
 import { appComponents } from "./appComponents";
 import { playerLogic } from "./playerLogic/playerLogic";
+import { appFormFunc } from "./appFormFunc";
+import { appUI } from "./appUI";
 
 const appEvents = (function() {
 
@@ -14,8 +16,18 @@ const appEvents = (function() {
         })); 
     };
 
+    function ship1Event() {
+        document.getElementById( `${appComponents.playerBoard.shipList[0].name}-btn` ).addEventListener( 'click', function(){
+            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[0] );
+            console.log( appComponents.playerBoard.shipList[0].position );
+            appComponents.playerBoard.placeShip( appComponents.playerBoard.shipList[0] );
+            appUI.generatePlayerCell();
+        });
+    }
+
     return {
         boardEvents,
+        ship1Event,
     };
 })();
 
