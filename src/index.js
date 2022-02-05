@@ -17,9 +17,7 @@ const spaceBattleShip = (function() {
 
     //eventlisteners
     appEvents.boardEvents();
-    appEvents.ship1Event();
-
-    console.log( appComponents.playerBoard.shipList[0].name );
+    appEvents.formEvents();
 
     return {};
 })();
