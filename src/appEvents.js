@@ -18,24 +18,21 @@ const appEvents = (function() {
 
     function shipForm1() {
         document.getElementById( `${appComponents.playerBoard.shipList[0].name}-btn` ).addEventListener( 'click', function(){
-            appFormFunc.clearBoard( appComponents.playerBoard );
-            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[0] );
+            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[0], appComponents.playerBoard );
             appUI.generatePlayerCell();
         });
     };
 
     function shipForm2() {
         document.getElementById( `${appComponents.playerBoard.shipList[1].name}-btn` ).addEventListener( 'click', function(){
-            appFormFunc.clearBoard( appComponents.playerBoard );
-            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[1] );
+            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[1], appComponents.playerBoard );
             appUI.generatePlayerCell();
         });
     };
 
     function shipForm3() {
         document.getElementById( `${appComponents.playerBoard.shipList[2].name}-btn` ).addEventListener( 'click', function(){
-            appFormFunc.clearBoard( appComponents.playerBoard );
-            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[2] );
+            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[2], appComponents.playerBoard );
             appUI.generatePlayerCell();
         });
     };
