@@ -80,6 +80,15 @@ const appUI = (function() {
         };
     };
 
+    function generateRandomButton() {
+        const randomButton = document.createElement( 'button' );
+        randomButton.setAttribute( 'type', 'button' );
+        randomButton.classList.add( 'placeRandom-btn' );
+        randomButton.innerText = 'ALL RANDOM';
+
+        document.querySelector( '.form-container' ).appendChild( randomButton );
+    };
+
     return {
         makeContainer,
         makeBoardContainer,
@@ -88,6 +97,7 @@ const appUI = (function() {
         generateComBoard,
         generateComCell,
         generateForm,
+        generateRandomButton,
     };
 })();
 

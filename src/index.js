@@ -14,10 +14,12 @@ const spaceBattleShip = (function() {
     appUI.generateComBoard();
     //appUI.generateComCell();
     appUI.generateForm();
+    appUI.generateRandomButton();
 
     //eventlisteners
     appEvents.boardEvents();
     appEvents.formEvents();
+    appEvents.randomBtn();
 
     return {};
 })();

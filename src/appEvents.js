@@ -18,6 +18,7 @@ const appEvents = (function() {
 
     function shipForm1() {
         document.getElementById( `${appComponents.playerBoard.shipList[0].name}-btn` ).addEventListener( 'click', function(){
+            appFormFunc.clearBoard( appComponents.playerBoard );
             appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[0] );
             appUI.generatePlayerCell();
         });
@@ -25,6 +26,7 @@ const appEvents = (function() {
 
     function shipForm2() {
         document.getElementById( `${appComponents.playerBoard.shipList[1].name}-btn` ).addEventListener( 'click', function(){
+            appFormFunc.clearBoard( appComponents.playerBoard );
             appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[1] );
             appUI.generatePlayerCell();
         });
@@ -32,6 +34,7 @@ const appEvents = (function() {
 
     function shipForm3() {
         document.getElementById( `${appComponents.playerBoard.shipList[2].name}-btn` ).addEventListener( 'click', function(){
+            appFormFunc.clearBoard( appComponents.playerBoard );
             appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[2] );
             appUI.generatePlayerCell();
         });
@@ -43,10 +46,22 @@ const appEvents = (function() {
         shipForm3();
     };
 
+    function randomBtn() {
+        document.querySelector( '.placeRandom-btn' ).addEventListener( 'click', function() {
+            appFormFunc.clearBoard( appComponents.playerBoard );
+            appFormFunc.randomShipLocation( appComponents.playerBoard.shipList[0] );
+            appFormFunc.randomShipLocation( appComponents.playerBoard.shipList[1] );
+            appFormFunc.randomShipLocation( appComponents.playerBoard.shipList[2] );
+            appUI.generatePlayerCell();
+            console.log( appComponents.playerBoard );
+        });
+    };
+
 
     return {
         boardEvents,
         formEvents,
+        randomBtn,
     };
 })();
 
