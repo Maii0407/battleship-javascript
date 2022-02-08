@@ -32,6 +32,7 @@ const playerLogic = (function() {
                 document.getElementById( `${location}` ).innerText = 'X';
             } else if( boardName.boardArray[ location ].isAttacked === 'missed' ) {
                 document.getElementById( `${location}` ).style.backgroundColor = 'green';
+                document.getElementById( `${location}` ).innerText = 'O';
             }
         } else {
             computerPlay( boardName );
@@ -49,6 +50,7 @@ const playerLogic = (function() {
                 event.target.innerText = 'X';
             } else if( enemyBoard.boardArray[ locationIndex ].isAttacked === 'missed' ) {
                 event.target.style.backgroundColor = 'green';
+                event.target.innerText = 'O';
             }
         } else {
             return;
