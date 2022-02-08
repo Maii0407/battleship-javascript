@@ -18,21 +18,28 @@ const appEvents = (function() {
 
     function shipForm1() {
         document.getElementById( `${appComponents.playerBoard.shipList[0].name}-btn` ).addEventListener( 'click', function(){
-            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[0], appComponents.playerBoard, appComponents.playerBoard.shipList[1], appComponents.playerBoard.shipList[2] );
+            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[0], appComponents.playerBoard, appComponents.playerBoard.shipList[1], appComponents.playerBoard.shipList[2], appComponents.playerBoard.shipList[3] );
             appUI.generatePlayerCell();
         });
     };
 
     function shipForm2() {
         document.getElementById( `${appComponents.playerBoard.shipList[1].name}-btn` ).addEventListener( 'click', function(){
-            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[1], appComponents.playerBoard, appComponents.playerBoard.shipList[0], appComponents.playerBoard.shipList[2] );
+            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[1], appComponents.playerBoard, appComponents.playerBoard.shipList[0], appComponents.playerBoard.shipList[2], appComponents.playerBoard.shipList[3] );
             appUI.generatePlayerCell();
         });
     };
 
     function shipForm3() {
         document.getElementById( `${appComponents.playerBoard.shipList[2].name}-btn` ).addEventListener( 'click', function(){
-            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[2], appComponents.playerBoard, appComponents.playerBoard.shipList[0], appComponents.playerBoard.shipList[1] );
+            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[2], appComponents.playerBoard, appComponents.playerBoard.shipList[0], appComponents.playerBoard.shipList[1], appComponents.playerBoard.shipList[3] );
+            appUI.generatePlayerCell();
+        });
+    };
+
+    function shipForm4() {
+        document.getElementById( `${appComponents.playerBoard.shipList[3].name}-btn` ).addEventListener( 'click', function() {
+            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[3], appComponents.playerBoard, appComponents.playerBoard.shipList[0], appComponents.playerBoard.shipList[1], appComponents.playerBoard.shipList[2] );
             appUI.generatePlayerCell();
         });
     };
@@ -41,6 +48,7 @@ const appEvents = (function() {
         shipForm1();
         shipForm2();
         shipForm3();
+        shipForm4();
     };
 
     function clearShip1() {
@@ -64,10 +72,18 @@ const appEvents = (function() {
         });
     };
 
+    function clearShip4() {
+        document.getElementById( `${appComponents.playerBoard.shipList[3].name}-clearBtn` ).addEventListener( 'click', function() {
+            appFormFunc.clearShip( appComponents.playerBoard.shipList[3], appComponents.playerBoard );
+            appUI.generatePlayerCell();
+        });
+    };
+
     function clearBtnEvents() {
         clearShip1();
         clearShip2();
         clearShip3();
+        clearShip4();
     };
 
     function randomBtn() {
@@ -76,6 +92,7 @@ const appEvents = (function() {
             appFormFunc.randomShipLocation( appComponents.playerBoard.shipList[0], appComponents.playerBoard );
             appFormFunc.randomShipLocation( appComponents.playerBoard.shipList[1], appComponents.playerBoard );
             appFormFunc.randomShipLocation( appComponents.playerBoard.shipList[2], appComponents.playerBoard );
+            appFormFunc.randomShipLocation( appComponents.playerBoard.shipList[3], appComponents.playerBoard );
             appUI.generatePlayerCell();
         });
     };

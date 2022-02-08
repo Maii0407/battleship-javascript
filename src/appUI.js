@@ -8,11 +8,39 @@ const appUI = (function() {
         document.body.appendChild( mainContainer );
     };
 
+    function makeTitleContainer() {
+        const title = document.createElement( 'div' );
+        title.classList.add( 'title-container' );
+        title.innerText = `MAII'S BATTLESHIP`;
+        document.querySelector( '.main-container' ).appendChild( title );
+    };
+
+    function makeContentContainer() {
+        const content = document.createElement( 'div' );
+        content.classList.add( 'content-container' );
+        document.querySelector( '.main-container' ).appendChild( content );
+    };
+
+    function makeMenuContainer() {
+        const menu = document.createElement( 'div' );
+        menu.classList.add( 'menu-container' );
+        menu.innerHTML = `
+          <button type="button" class="start-btn">START GAME</button>
+          <button type="button" class="reset-btn">RESET GAME</button>`;
+        document.querySelector( '.content-container' ).appendChild( menu );
+    };
+
 //generate a board container for the boards
     function makeBoardContainer() {
         const boardContainer = document.createElement( 'div' );
         boardContainer.classList.add( 'board-container' );
-        document.querySelector( '.main-container' ).appendChild( boardContainer );
+        document.querySelector( '.content-container' ).appendChild( boardContainer );
+    };
+
+    function makeFormWrapper() {
+        const form = document.createElement( 'div' );
+        form.classList.add( 'form-wrapper' );
+        document.querySelector( '.board-container' ).appendChild( form );
     };
 
 //append a board inside the board container then generates the cells for the grid
@@ -38,6 +66,8 @@ const appUI = (function() {
                   cell.style.backgroundColor = 'green';
               } else if( obj.haveShip === 2 ) {
                   cell.style.backgroundColor = 'blue';
+              } else if( obj.haveShip === 3 ) {
+                  cell.style.backgroundColor = 'yellow';
               } else { return };
 
             document.getElementById( `${appComponents.playerBoard.name}` ).appendChild( cell );
@@ -66,7 +96,7 @@ const appUI = (function() {
         comBoard.innerHTML = '';
         const formContainer = document.createElement( 'div' );
         formContainer.classList.add( 'form-container' );
-        document.querySelector( '.com-board' ).appendChild( formContainer );
+        document.querySelector( '.form-wrapper' ).appendChild( formContainer );
         for( let obj of appComponents.playerBoard.shipList ) {
           const form = document.createElement( 'form' );
           form.innerHTML = `   
@@ -96,7 +126,11 @@ const appUI = (function() {
 
     return {
         makeContainer,
+        makeTitleContainer,
+        makeContentContainer,
+        makeMenuContainer,
         makeBoardContainer,
+        makeFormWrapper,
         generatePlayerBoard,
         generatePlayerCell,
         generateComBoard,
