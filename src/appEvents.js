@@ -73,11 +73,10 @@ const appEvents = (function() {
     function randomBtn() {
         document.querySelector( '.placeRandom-btn' ).addEventListener( 'click', function() {
             appFormFunc.clearBoard( appComponents.playerBoard );
-            appFormFunc.randomShipLocation( appComponents.playerBoard.shipList[0] );
-            appFormFunc.randomShipLocation( appComponents.playerBoard.shipList[1] );
-            appFormFunc.randomShipLocation( appComponents.playerBoard.shipList[2] );
+            appFormFunc.randomShipLocation( appComponents.playerBoard.shipList[0], appComponents.playerBoard );
+            appFormFunc.randomShipLocation( appComponents.playerBoard.shipList[1], appComponents.playerBoard );
+            appFormFunc.randomShipLocation( appComponents.playerBoard.shipList[2], appComponents.playerBoard );
             appUI.generatePlayerCell();
-            console.log( appComponents.playerBoard );
         });
     };
 

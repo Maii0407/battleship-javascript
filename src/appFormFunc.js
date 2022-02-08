@@ -34,11 +34,9 @@ const appFormFunc = (function() {
                     board.boardArray[ val2 ].haveShip === 'empty' &&
                     board.boardArray[ val3 ].haveShip === 'empty' &&
                     board.boardArray[ val4 ].haveShip === 'empty' ) {
-                        if( val4 >= 49 ) {
-                            return;
-                        } else {
+                        if( horiBreak.indexOf( val ) === -1 ) {
                             ship.setPosition( [val, val2, val3, val4] );
-                        };
+                        } else { return };
                 } else {
                     alert( 'There is already a ship there' ); 
                     return; 
@@ -104,7 +102,7 @@ const appFormFunc = (function() {
     };
 
 //below is logic for randomly placing ships
-    function randomHorizontal( ship ) {
+    function randomHorizontal( ship, board ) {
         ship.position = [];
         const horiBreak = [4,5,6,11,12,13,18,19,20,25,26,27,32,33,34,39,40,41,46,47,48];
 
@@ -114,42 +112,59 @@ const appFormFunc = (function() {
         let val4 = val3 + 1;
 
         if( horiBreak.indexOf( val ) === -1 ) {
-            ship.setPosition( [val, val2, val3, val4] );
+            //do stuff
         } else {
-            randomHorizontal( ship );
+            randomHorizontal()
+        }
+
+        if( board.boardArray[ val ].haveShip === 'empty' && board.boardArray[ val2 ].haveShip === 'empty' &&
+            board.boardArray[ val3 ].haveShip === 'empty' && board.boardArray[ val4 ].haveShip === 'empty' ) {
+            if( horiBreak.indexOf( val ) === -1 ) {
+                ship.setPosition( [val, val2, val3, val4] );
+            } else {
+                randomHorizontal( ship, board );
+            };
+        } else {
+            randomHorizontal( ship, board );
         };
+
+        board.placeShip( ship );
     };
 
-    function randomVertical( ship ) {
+    function randomVertical( ship, board ) {
         ship.position = [];
+        //const vertiBreak = [28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48];
+
         let val = Math.floor( Math.random() * 49 );
         let val2 = val + 7;
         let val3 = val2 + 7;
         let val4 = val3 + 7;
 
-        if( val4 >= 49 ) {
-            randomVertical( ship );
+        if( board.boardArray[ val ].haveShip === 'empty' && board.boardArray[ val2 ].haveShip === 'empty' &&
+            board.boardArray[ val3 ].haveShip === 'empty' && board.boardArray[ val4 ].haveShip === 'empty' ) {
+            if( val4 >= 49 ) {
+                randomVertical( ship, board );
+            } else {
+                ship.setPosition( [val, val2, val3, val4] );
+            };
         } else {
-            ship.setPosition( [val, val2, val3, val4] );
+            randomVertical( ship, board );
         };
+
+        board.placeShip( ship );
     };
 
-    function randomShipLocation( ship ) {
+    function randomShipLocation( ship, board ) {
         const verOrHor = Math.floor( Math.random() * 10 );
 
         if( verOrHor >= 5 ) {
             console.log( 'horizontal' );
-            randomHorizontal( ship );
+            randomHorizontal( ship, board );
         } else if( verOrHor <= 4 ) {
             console.log( 'vertical' );
-            randomVertical( ship );
+            randomVertical( ship, board );
         };
-
-        appComponents.playerBoard.placeShip( ship );
     };
-
-    //so i solved the randomly placing ships but the problem now is the ships is placing on top of each other
-    //also placing the ships manually makes the ships before disappear
 
     return {
         submitShipLocation,
