@@ -28,10 +28,10 @@ const playerLogic = (function() {
         if( boardName.boardArray[ location ].isAttacked === 'empty' ) {
             boardName.recordAttack( location );
             if( boardName.boardArray[ location ].isAttacked === 'shot' ) {
-                document.getElementById( `${location}` ).style.backgroundColor = 'white';
+                document.getElementById( `${location}` ).style.backgroundColor = 'red';
                 document.getElementById( `${location}` ).innerText = 'X';
             } else if( boardName.boardArray[ location ].isAttacked === 'missed' ) {
-                document.getElementById( `${location}` ).style.backgroundColor = 'white';
+                document.getElementById( `${location}` ).style.backgroundColor = 'green';
             }
         } else {
             computerPlay( boardName );
@@ -39,15 +39,16 @@ const playerLogic = (function() {
     };
 
 //refactored for usage in UI of the app
-    function playerPlay( boardName, locationIndex ) {
-        if( boardName.boardArray[ locationIndex ].isAttacked === 'empty' ) {
-            boardName.recordAttack( locationIndex );
+    function playerPlay( enemyBoard, locationIndex, ownBoard ) {
+        if( enemyBoard.boardArray[ locationIndex ].isAttacked === 'empty' ) {
+            enemyBoard.recordAttack( locationIndex );
+            computerPlay( ownBoard );
 
-            if( boardName.boardArray[ locationIndex ].isAttacked === 'shot' ) {
+            if( enemyBoard.boardArray[ locationIndex ].isAttacked === 'shot' ) {
                 event.target.style.backgroundColor = 'red';
                 event.target.innerText = 'X';
-            } else if( boardName.boardArray[ locationIndex ].isAttacked === 'missed' ) {
-                event.target.style.backgroundColor = 'pink';
+            } else if( enemyBoard.boardArray[ locationIndex ].isAttacked === 'missed' ) {
+                event.target.style.backgroundColor = 'green';
             }
         } else {
             return;
@@ -55,14 +56,17 @@ const playerLogic = (function() {
     };
 
 //below is function that checks if there is a winner
-    function checkWinner( boardName ) {
-        boardName.checkSunkShips();
+    function checkWinner( boardSaya, enemyBoard ) {
+        enemyBoard.checkSunkShips();
+        boardSaya.checkSunkShips();
 
-        if( boardName.shipList[0].sunkStatus === true && boardName.shipList[1].sunkStatus === true &&
-            boardName.shipList[2].sunkStatus === true && boardName.shipList[3].sunkStatus === true &&
-            boardName.shipList[4].sunkStatus === true ) {
+        if( enemyBoard.shipList[0].sunkStatus === true && enemyBoard.shipList[1].sunkStatus === true &&
+            enemyBoard.shipList[2].sunkStatus === true && enemyBoard.shipList[3].sunkStatus === true ) {
             alert( 'Player Wins' );
-        }
+        } else if( boardSaya.shipList[0].sunkStatus === true && boardSaya.shipList[1].sunkStatus === true &&
+                   boardSaya.shipList[2].sunkStatus === true && boardSaya.shipList[3].sunkStatus === true ) {
+            alert( 'The Computer Won LOL' );
+        };
     };
 
     return {

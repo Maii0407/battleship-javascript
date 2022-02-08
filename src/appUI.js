@@ -60,15 +60,9 @@ const appUI = (function() {
 
               if( obj.haveShip === 'empty' ) {
                   cell.style.backgroundColor = 'black';
-              } else if( obj.haveShip === 0 ) {
-                  cell.style.backgroundColor = 'red';
-              } else if( obj.haveShip === 1 ) {
-                  cell.style.backgroundColor = 'green';
-              } else if( obj.haveShip === 2 ) {
-                  cell.style.backgroundColor = 'blue';
-              } else if( obj.haveShip === 3 ) {
-                  cell.style.backgroundColor = 'yellow';
-              } else { return };
+              }  else {
+                  cell.style.backgroundColor = 'silver';
+              };
 
             document.getElementById( `${appComponents.playerBoard.name}` ).appendChild( cell );
         };
@@ -92,8 +86,6 @@ const appUI = (function() {
     };
 
     function generateForm() {
-        const comBoard = document.querySelector( '.com-board' );
-        comBoard.innerHTML = '';
         const formContainer = document.createElement( 'div' );
         formContainer.classList.add( 'form-container' );
         document.querySelector( '.form-wrapper' ).appendChild( formContainer );

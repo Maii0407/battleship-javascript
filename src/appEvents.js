@@ -9,10 +9,8 @@ const appEvents = (function() {
         document.querySelectorAll( '.com-cell' ).forEach( (cell) => cell.addEventListener( 'click', function() {
             let cellIndex = cell.id;
 
-            playerLogic.playerPlay( appComponents.comBoard, cellIndex );
-            playerLogic.computerPlay( appComponents.playerBoard );
-            playerLogic.checkWinner( appComponents.playerBoard );
-            playerLogic.checkWinner( appComponents.comBoard );
+            playerLogic.playerPlay( appComponents.comBoard, cellIndex, appComponents.playerBoard );
+            playerLogic.checkWinner( appComponents.playerBoard, appComponents.comBoard );
         })); 
     };
 

@@ -8,6 +8,8 @@ const appFormFunc = (function() {
     };
 
     function clearShip( ship, board ) {
+        ship.position = [];
+        
         for( let obj of board.boardArray ) {
             if( obj.haveShip === ship.shipIndex ) {
                 obj.haveShip = 'empty';
@@ -154,10 +156,8 @@ const appFormFunc = (function() {
         const verOrHor = Math.floor( Math.random() * 10 );
 
         if( verOrHor >= 5 ) {
-            console.log( 'horizontal' );
             randomHorizontal( ship, board );
         } else if( verOrHor <= 4 ) {
-            console.log( 'vertical' );
             randomVertical( ship, board );
         };
     };

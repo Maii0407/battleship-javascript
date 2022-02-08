@@ -56,6 +56,7 @@ input, select, button {
     font-size: 50px;
     text-align: center;
     text-indent: 50px;
+    color: gainsboro;
 }
 
 .content-container {
@@ -107,6 +108,7 @@ input, select, button {
     text-align: center;
     padding-top: 10px;
     cursor: pointer;
+    color: gainsboro;
 }
 
 .button-container {
@@ -123,6 +125,15 @@ input, select, button {
 
 .placeRandom-btn {
     margin-top: 20px;
+    background-color: yellow;
+    color: black;
+    outline: 1px solid black;
+}
+
+.placeRandom-btn:hover {
+    background-color: black;
+    color: yellow;
+    outline: 1px solid yellow;
 }
 
 .start-btn {
