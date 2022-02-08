@@ -20,6 +20,7 @@ const spaceBattleShip = (function() {
     appEvents.boardEvents();
     appEvents.formEvents();
     appEvents.randomBtn();
+    appEvents.clearBtnEvents();
 
     return {};
 })();

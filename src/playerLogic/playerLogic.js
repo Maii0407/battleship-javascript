@@ -28,10 +28,10 @@ const playerLogic = (function() {
         if( boardName.boardArray[ location ].isAttacked === 'empty' ) {
             boardName.recordAttack( location );
             if( boardName.boardArray[ location ].isAttacked === 'shot' ) {
-                document.getElementById( `${location}` ).style.backgroundColor = 'red';
+                document.getElementById( `${location}` ).style.backgroundColor = 'white';
                 document.getElementById( `${location}` ).innerText = 'X';
             } else if( boardName.boardArray[ location ].isAttacked === 'missed' ) {
-                document.getElementById( `${location}` ).style.backgroundColor = 'pink';
+                document.getElementById( `${location}` ).style.backgroundColor = 'white';
             }
         } else {
             computerPlay( boardName );

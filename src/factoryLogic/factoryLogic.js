@@ -11,7 +11,7 @@ const factoryLogic = ( function() {
             this.sunkStatus = false;
         }
 
-        setPosition(positionArray) {
+        setPosition( positionArray ) {
             positionArray.forEach( object => {
                 this.position.push( object );
             });

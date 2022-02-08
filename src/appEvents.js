@@ -18,21 +18,21 @@ const appEvents = (function() {
 
     function shipForm1() {
         document.getElementById( `${appComponents.playerBoard.shipList[0].name}-btn` ).addEventListener( 'click', function(){
-            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[0], appComponents.playerBoard );
+            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[0], appComponents.playerBoard, appComponents.playerBoard.shipList[1], appComponents.playerBoard.shipList[2] );
             appUI.generatePlayerCell();
         });
     };
 
     function shipForm2() {
         document.getElementById( `${appComponents.playerBoard.shipList[1].name}-btn` ).addEventListener( 'click', function(){
-            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[1], appComponents.playerBoard );
+            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[1], appComponents.playerBoard, appComponents.playerBoard.shipList[0], appComponents.playerBoard.shipList[2] );
             appUI.generatePlayerCell();
         });
     };
 
     function shipForm3() {
         document.getElementById( `${appComponents.playerBoard.shipList[2].name}-btn` ).addEventListener( 'click', function(){
-            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[2], appComponents.playerBoard );
+            appFormFunc.submitShipLocation( appComponents.playerBoard.shipList[2], appComponents.playerBoard, appComponents.playerBoard.shipList[0], appComponents.playerBoard.shipList[1] );
             appUI.generatePlayerCell();
         });
     };
@@ -41,6 +41,33 @@ const appEvents = (function() {
         shipForm1();
         shipForm2();
         shipForm3();
+    };
+
+    function clearShip1() {
+        document.getElementById( `${appComponents.playerBoard.shipList[0].name}-clearBtn` ).addEventListener( 'click', function() {
+            appFormFunc.clearShip( appComponents.playerBoard.shipList[0], appComponents.playerBoard );
+            appUI.generatePlayerCell();
+        });
+    };
+
+    function clearShip2() {
+        document.getElementById( `${appComponents.playerBoard.shipList[1].name}-clearBtn` ).addEventListener( 'click', function() {
+            appFormFunc.clearShip( appComponents.playerBoard.shipList[1], appComponents.playerBoard );
+            appUI.generatePlayerCell();
+        });
+    };
+
+    function clearShip3() {
+        document.getElementById( `${appComponents.playerBoard.shipList[2].name}-clearBtn` ).addEventListener( 'click', function() {
+            appFormFunc.clearShip( appComponents.playerBoard.shipList[2], appComponents.playerBoard );
+            appUI.generatePlayerCell();
+        });
+    };
+
+    function clearBtnEvents() {
+        clearShip1();
+        clearShip2();
+        clearShip3();
     };
 
     function randomBtn() {
@@ -59,6 +86,7 @@ const appEvents = (function() {
         boardEvents,
         formEvents,
         randomBtn,
+        clearBtnEvents,
     };
 })();
 

@@ -32,9 +32,13 @@ const appUI = (function() {
 
               if( obj.haveShip === 'empty' ) {
                   cell.style.backgroundColor = 'black';
-              } else {
-                  cell.style.backgroundColor = 'silver';
-              }
+              } else if( obj.haveShip === 0 ) {
+                  cell.style.backgroundColor = 'red';
+              } else if( obj.haveShip === 1 ) {
+                  cell.style.backgroundColor = 'green';
+              } else if( obj.haveShip === 2 ) {
+                  cell.style.backgroundColor = 'blue';
+              } else { return };
 
             document.getElementById( `${appComponents.playerBoard.name}` ).appendChild( cell );
         };
@@ -72,8 +76,9 @@ const appUI = (function() {
               <option value="horizontal">Horizontal</option>
               <option value="vertical">Vertical</option>
             </select>
-            <div class="shipCoor-container">
-              <input type="number" id="${obj.name}-position" placeholder="Enter Ship 1 Coordinate" min="0" max="48">
+            <input type="number" id="${obj.name}-position" placeholder="Enter Ship 1 Coordinate" min="0" max="48">
+            <div class="button-container">
+              <button type="button" class="clear-btn" id="${obj.name}-clearBtn">CLEAR SHIP</button>
               <button type="button" class="submit-btn" id="${obj.name}-btn">PLACE SHIP</button>
             </div>`;
           document.querySelector( '.form-container' ).appendChild( form ); 
